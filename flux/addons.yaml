@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1m
-  url: https://github.com/memoliyasti/todowithflask/
+  url: https://github.com/kulik95/todowithflask
   ref:
     branch: main
   ignore: |
