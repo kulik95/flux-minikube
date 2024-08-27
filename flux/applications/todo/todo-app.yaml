@@ -10,3 +10,4 @@ spec:
   sourceRef:
     kind: GitRepository
     name: todo-app
+  targetNamespace: todo # You need to create this ns manually
