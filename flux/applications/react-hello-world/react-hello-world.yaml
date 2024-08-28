@@ -1,7 +1,7 @@
 apiVersion: source.toolkit.fluxcd.io/v1beta1
 kind: HelmRepository
 metadata:
-  name: todo-app
+  name: helm-charts-repo
   namespace: flux-system
 spec:
   interval: 1m0s
@@ -12,15 +12,16 @@ spec:
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
-  name: todo-app
+  name: react-hello-world
   namespace: flux-system
 spec:
   interval: 1m0s
   chart:
     spec:
-      chart: todo-app
+      targetNamespace: react-hello-world
+      chart: react-hello-world
       sourceRef:
         kind: HelmRepository
-        name: todo-app
+        name: helm-charts-repo
         namespace: flux-system
       interval: 1m0s
