@@ -1,0 +1,35 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: HelmRepository
+metadata:
+  name: opal-helm-repo
+  namespace: flux-system
+spec:
+  interval: 24h
+  url: https://permitio.github.io/opal-helm-chart/
+
+---
+
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: opal
+  namespace: flux-system
+spec:
+  interval: 24h
+  releaseName: opal
+  targetNamespace: react-hello-world
+  chart:
+    spec:
+      chart: opal
+      sourceRef:
+        kind: HelmRepository
+        name: opal-helm-repo
+        namespace: flux-system
+  values:
+    server:
+      port: 7002
+      replicas: 1
+
+    additionalVariables:
+      - name: OPAL_POLICY_REPO_POLLING_INTERVAL
+        value: "30"
