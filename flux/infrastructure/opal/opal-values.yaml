@@ -33,3 +33,14 @@ spec:
     additionalVariables:
       - name: OPAL_POLICY_REPO_POLLING_INTERVAL
         value: "30"
+      - name: OPAL_DATA_CONFIG_SOURCES
+        value: |
+          {
+            "config": {
+                "entries": [
+                  {"url":"http://host.minikube.internal:3000/","topics":["user-attributes"]}
+                ]
+            }
+          }
+      - name: OPAL_POLICY_REPO_URL
+        value: "https://github.com/kulik95/opal-policies"
